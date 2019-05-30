@@ -9,8 +9,16 @@ var methodOverride = require('method-override')
 let multer = require('multer');
 let session = require('express-session')
 
-// Include passport configuration
-let passport = require('./config/passportConfig')
+
+
+
+let Router = express.Router;
+const upload = multer({ dest: 'tmp/csv/' });
+
+const router = new Router();
+const server = http.createServer(app);
+let port = 3000
+
 
 
 // Declare Express app
@@ -18,6 +26,30 @@ let app = express()
 
 // Set view engine
 app.set('view engine', 'ejs')
+    router.post('/', upload.single('file'), function (req, res) {
+      const fileRows = [];
+    
+      // open uploaded file
+      csv.fromPath(req.file.path)
+        .on("data", function (data) {
+          fileRows.push(data); // push each row
+        })
+        .on("end", function () {
+          console.log(fileRows)
+          fs.unlinkSync(req.file.path); 
+        })
+    });
+    
+    app.use('/upload-csv', router);
+    
+    // Start server
+    function startServer() {
+      server.listen(port, function () {
+        console.log('Express server listening on ', port);
+      });
+    }
+    
+    setImmediate(startServer);
 
 // Include (use) middleware
 app.use(methodOverride('_method'))
