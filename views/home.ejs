@@ -1,3 +1,6 @@
+
+
+
 <div id="nav-wrapper">
 	<div id="nav-left" class="nav-sides">
 		<img src="images/half-owl.png">
@@ -5,11 +8,15 @@
 	<div id="nav-center">
 		<h3>Hoo&rsquo;s News?</h3>
 	</div>
-	<div id="nav-right" class="nav-sides">
-		<img src="images/user_orange.png">
-	</div>
+	<%if (user) {%>
+		<div id="nav-right" class="nav-sides">
+			<img src="images/user_orange.png">
+		</div>
+	<% } %>
+
 </div>
 <div id="grid-wrapper">
+	<%if (!user) {%>
 	<div class="body-wrapper">
 		<div class="fade-gray" id="letsplay">
 			<h1>Let&rsquo;s play!</h1>
@@ -20,7 +27,23 @@
 		<form action="auth/signup">
 		    <input type="submit" class="wide-button" value="SIGNUP" />
 		</form>		
-<!-- 		<button class="wide-button">login</button><br>
-		<button class="wide-button">sign up</button><br> -->
 	</div>
+	<% } else { %>
+	<div class="body-wrapper">
+		<div class="fade-gray" id="letsplay">
+			<h2>Hello, Sneelock!</h2>
+		</div>
+		<img src="images/owl.png" style="width: 40vh;">
+        <label for="mood">What&rsquo;s your current mood?</label><br>
+        <select id="mood" name="mood">
+          <option value="happy">happy</option>
+          <option value="kinda happy">kinda happy</option>
+          <option value="okay">okay</option>
+          <option value="annoyed">annoyed</option>
+          <option value="mad">mad</option>
+        </select><br><br>
+
+	</div>
+	<% } %>
+
 </div>
