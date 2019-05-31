@@ -7,7 +7,7 @@ let request =  require('request')
 let router = express.Router()
 
 // GET article from API
-router.get('/', (req, res) => {
+router.get('/quiz', (req, res) => {
   db.quiz.createOne({
     where: { userId: req.user.id }
   })
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
   // POST headline from csv to quiz 
 
-  router.post('/', function (req, res) {
+  router.post('/quiz', function (req, res) {
     csv
       .fromPath("../real_news.csv")
       .on("data", function(data){
