@@ -9,11 +9,12 @@ let db = require('../models')
 
 // Declare routes
 router.get('/login', (req, res) => {
-  res.render('/quiz')
+  res.render('auth/login')
 })
 
 router.post('/login', (req, res) => {
-  res.render('/quiz')
+
+  res.redirect('/quiz/0')
 })
 
 router.get('/signup', (req, res) => {
@@ -21,35 +22,35 @@ router.get('/signup', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  console.log(req.body)
-  db.user.findOrCreate({
-    where: { email: req.body.username },
-    defaults: req.body
-  })
-    .spread((user, wasCreated) => {
-      if(wasCreated) {
-        req.flash('success', 'You are all signed up!')
-        res.redirect('/profile')
-      } else {
-        req.flash('error', 'Account already exists. Please log in!')
-        res.redirect('/auth/login')
-      }
-    })
-    .catch((err) => {
-      // Print all error info to the terminal (not okay for the user to see)
-      console.log('Error in POST /auth/signup', err)
-      // Generic Error for all cases
-      req.flash('error', 'Something went wrong 😭')
-      // Validation-specific arrors (okay to show the user)
-      if(err && err.errors) {
-        err.errors.forEach((e) => {
-          if(e.type == 'Validation error') {
-            req.flash('error', 'Validation issue -' + e.mesage)
-          }
-        })
-      }
-      res.redirect('/auth/signup')
-    })
+  // console.log("req.body=", req.body)
+  // db.user.findOrCreate({
+  //   where: { firstName: req.body.firstName },
+  //   defaults: req.body
+  // })
+  //   .spread((user, wasCreated) => {
+  //     if(wasCreated) {
+  //       // req.flash('success', 'You are all signed up!')
+  //       res.redirect('/profile')
+  //     } else {
+  //       // req.flash('error', 'Account already exists. Please log in!')
+  //       res.redirect('/auth/login')
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     // Print all error info to the terminal (not okay for the user to see)
+  //     console.log('Error in POST /auth/signup', err)
+  //     // Generic Error for all cases
+  //     req.flash('error', 'Something went wrong 😭')
+  //     // Validation-specific arrors (okay to show the user)
+  //     if(err && err.errors) {
+  //       err.errors.forEach((e) => {
+  //         if(e.type == 'Validation error') {
+  //           req.flash('error', 'Validation issue -' + e.mesage)
+  //         }
+  //       })
+  //     }
+      res.redirect('/quiz/0')
+    // })
   })
 
 //GET /auth/logout
