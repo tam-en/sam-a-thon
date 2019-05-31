@@ -14,15 +14,15 @@
     <div class="body-wrapper">
     <div class="dark-form">
       <h2 class="mustard">Signup</h2>
-      <form action="#">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="user name" placeholder="your user name"><br>
+      <form method="POST" action="signup">
+        <label for="firstName">Username:</label><br>
+        <input type="text" id="firstName" name="firstName" placeholder="your username"><br>
 
         <label for="password">Password: </label><br>
         <input type="text" id="password" name="password" placeholder="your password"><br>
 
-        <label for="education">Education Level (select): </label><br>
-        <select id="education" name="education">
+        <label for="educationLevel">Education Level (select): </label><br>
+        <select id="educationLevel" name="educationLevel">
           <option value="some high school">some high school</option>
           <option value="high school/GED">high school/GED</option>
           <option value="some college">some college</option>
@@ -31,8 +31,8 @@
           <option value="advanced degree">advanced degree</option>
         </select><br>
 
-        <label for="political">Political Affiliation (select): </label><br>
-        <select id="political" name="political">
+        <label for="politicalView">Political Affiliation (select): </label><br>
+        <select id="politicalView" name="politicalView">
           <option value="Democrat">Democrat</option>
           <option value="Republican">Republican</option>
           <option value="Libertarian">Libertarian</option>
