@@ -13,14 +13,14 @@ router.get('/', (req, res) => {
   if(!req.user) {
     res.redirect('/auth/signup')
   } else {
-    db.favorite.findAll({
+    db.result.findAll({
       where: { userId: req.user.id }
     })
     .then((faves) => {
-      res.render('profile/index', { faves })
+      res.render('profile/index', { results })
     })
     .catch((err) => {
-      console.log('Error in GET /favorites', err)
+      console.log('Error in GET /results', err)
       res.render('404')
     })
   }
@@ -37,10 +37,12 @@ router.get('/edit/:id', (req, res) => {
 // PUT (put edited user info on profile)
 router.put('/edit', (req, res) => {
   db.user.update({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    birthday: req.body.birthday,
+    userName: req.body.userName,
+    age: req.body.age,
+    gender: req.body.gender,
+    educationLevel: req.body.educationLevel,
+    politicalView: req.body.politicalView,
+    travel: req.body.travel
   },
   {where: { id: req.user.id } }
   )
@@ -51,22 +53,18 @@ router.put('/edit', (req, res) => {
     })
 })
 
-//POST a favorite
-router.post('/favorites', (req, res) => {
+//POST results
+router.post('/results', (req, res) => {
   if( !req.user) {
     res.redirect('/auth/signup')
   } else {
     console.log(req.body)
     console.log(req.user.id)
-    db.favorite.create({
+    db.result.create({
       userId: req.user.id,
-      url: req.body.url,
-      label: req.body.label,
-      image: req.body.image,
-      uri: req.body.uri,
-      foodId: req.body.foodId
+      
     })
-    .then((favorites) => {
+    .then((results) => {
       res.redirect('/profile')
     })
     .catch(err => {
@@ -79,10 +77,10 @@ router.post('/favorites', (req, res) => {
 
 // DELETE /remove/faves
 router.delete('/', (req, res) => {
-  db.favorite.destroy({
+  db.result.destroy({
     where: { id: req.body.id }
   })
-  .then(deletedRecipe => {
+  .then(deletedResult => {
     res.redirect('/profile')
   })
   .catch(err => {
