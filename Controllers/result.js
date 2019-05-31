@@ -5,11 +5,11 @@ router.get('/', (req, res) => {
     db.result.findAll({
       where: { userId: req.user.id }
     })
-    .then((faves) => {
-      res.render('profile/index', { faves })
+    .then((result) => {
+      res.render('profile/index', { result })
     })
     .catch((err) => {
-      console.log('Error in GET /favorites', err)
+      console.log('Error in GET /result', err)
       res.render('404')
     })
   }
@@ -23,7 +23,7 @@ router.post('/result', (req, res) => {
     console.log(req.body)
     console.log(req.user.id)
     db.result.findAll({
-      
+      where: { userId: req.user.id }
     })
     .then((result) => {
       res.redirect('/profile')

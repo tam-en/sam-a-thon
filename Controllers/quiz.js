@@ -8,13 +8,19 @@ let router = express.Router()
 
 // GET article from API
 router.get('/', (req, res) => {
-    res.send('home')
+  db.quiz.createOne({
+    where: { userId: req.user.id }
   })
+  csv
+      .fromPath("../real_news.csv")
+      .on("data", function(data){
+        console.log(data)
+      })
+    res.send('/quiz')
+  })
+  
 
-  // POST article from API
-  router.post('/', (req, res) => {
-    res.send('home')
-  })
+  // POST headline from csv to quiz 
 
   router.post('/', function (req, res) {
     csv
@@ -22,17 +28,6 @@ router.get('/', (req, res) => {
       .on("data", function(data){
         console.log(data)
       })
-      // const fileRows = [];
-    
-      // open uploaded file
-      // csv.fromPath(req.file.path)
-      //   .on("data", function (data) {
-      //     fileRows.push(data); // push each row
-      //   })
-      //   .on("end", function () {
-      //     console.log(fileRows)
-      //     fs.unlinkSync(req.file.path); 
-      //   })
     });
 
 module.exports = router
