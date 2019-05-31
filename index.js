@@ -3,7 +3,7 @@ let csv = require('fast-csv');
 let express = require('express')
 let fs = require('fs');
 let http = require('http');
-// let flash = require('connect-flash')
+let flash = require('connect-flash')
 let layouts = require('express-ejs-layouts')
 var methodOverride = require('method-override')
 let multer = require('multer');
@@ -54,7 +54,8 @@ app.get('/', (req, res) => {
 
 // Catch-all route - render the 404 page
 app.get('*', (req, res) => {
-  res.render('404')
+  // res.render('404')
+  res.send("Rutro, error")
 })
 
 // Listen from your port
