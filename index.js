@@ -53,6 +53,10 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
+app.get('/test', (req, res) => {
+  res.render('score')
+})
+
 // Catch-all route - render the 404 page
 app.get('*', (req, res) => {
   // res.render('404')
