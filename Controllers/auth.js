@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  res.render('quiz')
+  res.render('/quiz')
 })
 
 router.get('/signup', (req, res) => {
