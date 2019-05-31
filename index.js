@@ -26,6 +26,7 @@ let app = express()
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use('/', express.static('static'))
+app.use('/images', express.static('images'))
 app.use(layouts)
 app.use(express.urlencoded({ extended: false }))
 // app.use(session({

@@ -1,4 +1,4 @@
-<div class="container center" id="log-in">
+<!-- <div class="container center" id="log-in">
 <h1>Log In</h1>
 <p>New to this site? Go to the <a href="/auth/signup">sign up page</a> instead!</p>
     <form method="POST" action="/auth/login">
@@ -13,6 +13,41 @@
       </div>
       <br>
       <input type="submit" value="Login" class="btn btn-large">
+    </form>
+  </div>
+</div> -->
+
+
+<div id="nav-wrapper">
+  <div id="nav-left" class="nav-sides">
+    <img src="../images/half-owl.png">
+  </div>
+  <div id="nav-center">
+    <h3>Hoo&rsquo;s News?</h3>
+  </div>
+
+</div>
+<div id="grid-wrapper">
+  <div class="body-wrapper" id="landing-body-wrapper">
+  <div class="dark-form">
+    <h2 class="mustard">Login</h2>
+    <form method="POST" action="/auth/login">
+      <label for="username">User name:</label><br>
+      <input type="text" id="username" name="user name" placeholder="your user name"><br>
+
+      <label for="password">Password: </label><br>
+      <input type="text" id="password" name="password" placeholder="your password"><br>
+
+      <label for="country">Your current mood:</label><br>
+      <select id="country" name="country">
+        <option value="happy">happy</option>
+        <option value="kinda happy">kinda happy</option>
+        <option value="okay">okay</option>
+        <option value="annoyed">annoyed</option>
+        <option value="mad">mad</option>
+      </select><br><br>
+
+      <input type="submit" value="Submit" class="wide-button"><br><br>
     </form>
   </div>
 </div>

@@ -31,17 +31,18 @@ h1, h2, h3, h4, h5, h6 {
 	letter-spacing: .01em;
 }
 
+#backgroundimage {
+	position: fixed;
+	margin-top: 0px;
+	height: 100vh;	
+	z-index: -10;
+}
+
 #grid-wrapper {
 	display: grid;
 	grid-template-columns: 1fr 10fr 1fr;
 	height: 100vh;
 	z-index: 0;
-	background-image: url("../images/background_big.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-	text-align: center;	
-	margin-top: 0px;
-	height: 100vh;	
 }
 
 #nav-wrapper {
