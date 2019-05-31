@@ -9,11 +9,11 @@ let db = require('../models')
 
 // Declare routes
 router.get('/login', (req, res) => {
-  res.render('auth/login')
+  res.render('/quiz')
 })
 
 router.post('/login', (req, res) => {
-  res.send('Reached the route POST to /auth/login')
+  res.render('quiz')
 })
 
 router.get('/signup', (req, res) => {
@@ -29,7 +29,7 @@ router.post('/signup', (req, res) => {
     .spread((user, wasCreated) => {
       if(wasCreated) {
         req.flash('success', 'You are all signed up!')
-        res.redirect('/')
+        res.redirect('/profile')
       } else {
         req.flash('error', 'Account already exists. Please log in!')
         res.redirect('/auth/login')
@@ -38,10 +38,8 @@ router.post('/signup', (req, res) => {
     .catch((err) => {
       // Print all error info to the terminal (not okay for the user to see)
       console.log('Error in POST /auth/signup', err)
-      
       // Generic Error for all cases
       req.flash('error', 'Something went wrong 😭')
-
       // Validation-specific arrors (okay to show the user)
       if(err && err.errors) {
         err.errors.forEach((e) => {
