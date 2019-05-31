@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   question.associate = function(models) {
     // associations can be defined here
+    // models.question.hasMany(models.choice)
   };
   return question;
 };
