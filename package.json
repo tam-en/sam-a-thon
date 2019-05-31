@@ -1,0 +1,30 @@
+{
+  "name": "sam-a-thon",
+  "version": "1.0.0",
+  "description": "More TKTKTKKTKT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shelmbreck/sam-a-thon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shelmbreck/sam-a-thon/issues"
+  },
+  "homepage": "https://github.com/shelmbreck/sam-a-thon#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "fast-csv": "^2.5.0",
+    "pg": "^7.11.0",
+    "request": "^2.88.0",
+    "sequelize": "^5.8.7",
+    "sequelize-cli": "^5.4.0"
+  }
+}
