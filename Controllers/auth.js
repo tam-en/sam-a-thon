@@ -22,6 +22,10 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
   console.log(req.body)
+  db.user.findOrCreate({
+    where: { email: req.body.username },
+    defaults: req.body
+  })
     .spread((user, wasCreated) => {
       if(wasCreated) {
         req.flash('success', 'You are all signed up!')
