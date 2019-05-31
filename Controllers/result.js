@@ -1,4 +1,4 @@
-router.get('/', (req, res) => {
+router.get('/result/:id', (req, res) => {
   if(!req.user) {
     res.redirect('/auth/signup')
   } else {
@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
       where: { userId: req.user.id }
     })
     .then((result) => {
-      res.render('profile/index', { result })
+      res.render('result/index', { result })
     })
     .catch((err) => {
       console.log('Error in GET /result', err)
